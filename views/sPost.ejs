@@ -1,20 +1,20 @@
 <% include header %>
     <div class="spost">
-        <p class="spost_user">author: <a href="/posts?author=<%= posts[0]['name'] %>"><%= posts[0]['name'] %></a></p>
+        <p class="spost_user">作者: <a href="/posts?author=<%= posts[0]['name'] %>"><%= posts[0]['name'] %></a></p>
         <div class="post_title">
-            <h3>title</h3>
+            <h3>标题</h3>
             <p><a href="/posts/<%= posts[0]['id'] %>"><%= posts[0]['title'] %></a></p>
         </div>
         <div class="post_content">
-            <h3>content</h3>
+            <h3>正文</h3>
             <p><%= posts[0]['content'] %></p>
         </div>
         <div class="edit">
-            <% if(session && session.user===  posts[0]['name']  ){ %>
+            <% if(session && session.user ===  posts[0]['name']  ){ %>
             <p><a href="<%= posts[0]['id'] %>/edit">编辑</a></p>
-            <p><a class="delete_post" >删除</a></p>
+            <p><a class="delete_post">删除</a></p>
             <% } %>
-            <script>
+            <script type="text/javascript">
                 $('.delete_post').click(()=>{
                     $.ajax({
                         url:"<%= posts[0]['id'] %>/remove",
@@ -22,21 +22,21 @@
                         cache: false,
                         success:function(msg){
                             if (msg.data==1) {
-                                $('.success').text('删除文章成功')
-                                fade('.success')
+                                $('.success').text('删除文章成功');
+                                fade('.success');
                                 setTimeout(()=>{
-                                        window.location.href="/posts"
-                                },1000)
+                                        //window.location.href="/posts";
+                                },1000);
                             }else if(msg.data==2){
-                                $('.error').text('删除文章失败')
-                                fade('.error');
+                                $('.error').text('删除文章失败');
+                                fade('.error');;
                                 setTimeout(()=>{
-                                    window.location.reload()
-                                },1000)
+                                    window.location.reload();
+                                },1000);
                             }
                         }
-                    })
-                })
+                    });
+                });
             </script>
         </div>
     </div>
@@ -64,21 +64,21 @@
                             cache: false,
                             success:function(msg){
                                 if (msg.data==1) {
-                                    $('.success').text('删除留言成功')
-                                    fade('.success')
+                                    $('.success').text('删除留言成功');
+                                    fade('.success');
                                     setTimeout(()=>{
-                                        window.location.reload()
-                                    },1000)
+                                        window.location.reload();
+                                    },1000);
                                 }else if(msg.data==2){
-                                    $('.error').text('删除留言失败')
+                                    $('.error').text('删除留言失败');
                                     fade('.error');
                                     setTimeout(()=>{
-                                        window.location.reload()
+                                        window.location.reload();
                                     },1000)
                                 }
                             },
                             error:function(){
-                                alert('异常')
+                                alert('异常');
                             }
                         })
                     })
@@ -92,7 +92,7 @@
         </form>
         <% } %>
     </div>
-    <script>
+    <script type="text/javascript">
         $('.submit').click(function(){
             $.ajax({
                 url: '/'+document.URL.slice(document.URL.lastIndexOf('/')+1),
@@ -102,17 +102,17 @@
                 dataType: 'json',
                 success: function (msg) {
                    if (msg) {
-                        $('.success').text('发表留言成功')
-                        fade('.success')
+                        $('.success').text('发表留言成功');
+                        fade('.success');
                         setTimeout(()=>{
-                            window.location.reload()
-                        },1000)
+                            window.location.reload();
+                        },1000);
                    }
                 },
                 error: function () {
                     alert('异常');
                 }
-            })
+            });
         })
     </script>
 <% include footer %>

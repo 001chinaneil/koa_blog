@@ -9,7 +9,7 @@
     <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <header>
         <div class="user_name">
-            user：
+            用户:
             <% if(session.user){ %>
                  <%= session.user %>
             <% } %>
@@ -22,7 +22,7 @@
             <div class="success"></div>
         </div>
         <div class="user_right">
-            <%  if(session.user){ %>
+            <% if(session.user){ %>
                 <div class="has_user">
                     <a href="/posts">全部文章</a>
                     <a href="/create">发表文章</a>
@@ -38,14 +38,13 @@
             <% } %>
         </div>
     </header>
-    <script>
+    <script type="text/javascript">
         function fade(data){
-            if ($(data).css('display')!=='none') {
-                $(data).fadeOut(1500)
-            }
-            else{
-                $(data).show()
-                $(data).fadeOut(1500)
+            if( $(data).css('display') !== 'none' ) {
+                $(data).fadeOut(1500);
+            }else{
+                $(data).show();
+                $(data).fadeOut(1500);
             }
         }
         $('.signout').click(()=>{
@@ -56,16 +55,16 @@
                 dataType: 'json',
                 success: function (msg) {
                    if (msg) {
-                        $('.success').text('登出成功')
-                        fade('.success')
+                        $('.success').text('登出成功');
+                        fade('.success');
                         setTimeout(()=>{
-                            window.location.href="/posts"
-                        },1000)
+                            window.location.href="/posts";
+                        },1000);
                    }
                 },
                 error: function () {
                     alert('异常');
                 }
             })
-        })
+        });
     </script>

@@ -1,4 +1,5 @@
 <% include header %>
+    <!--博客 主列表-->
     <ul class="posts">
         <% posts.forEach(function(res){ %>
             <li>
@@ -9,11 +10,11 @@
                 </div>
                 <a href="/posts/<%= res['id'] %>">
                     <div class="post_title">
-                        <h3>title</h3>
+                        <h3>标题</h3>
                         <p><%= res['title'] %></p>
                     </div>
                     <div class="post_content">
-                        <h3>content</h3>
+                        <h3>正文</h3>
                         <p><%= res['content'] %></p>
                     </div>
                 </a>

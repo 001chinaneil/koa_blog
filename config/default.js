@@ -1,6 +1,6 @@
 const config = {
     //启动端口
-    port: 3012,
+    port: 3014,
     database: {
         DATABASE: "nodesql",
         HOST: "localhost",
