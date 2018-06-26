@@ -14,34 +14,10 @@
             <p><a href="<%= posts[0]['id'] %>/edit">编辑</a></p>
             <p><a class="delete_post">删除</a></p>
             <% } %>
-            <script type="text/javascript">
-                $('.delete_post').click(()=>{
-                    $.ajax({
-                        url:"<%= posts[0]['id'] %>/remove",
-                        type:'GET',
-                        cache: false,
-                        success:function(msg){
-                            if (msg.data==1) {
-                                $('.success').text('删除文章成功');
-                                fade('.success');
-                                setTimeout(()=>{
-                                        //window.location.href="/posts";
-                                },1000);
-                            }else if(msg.data==2){
-                                $('.error').text('删除文章失败');
-                                fade('.error');;
-                                setTimeout(()=>{
-                                    window.location.reload();
-                                },1000);
-                            }
-                        }
-                    });
-                });
-            </script>
         </div>
     </div>
     <div class="comment_wrap">
-        <h3>comment</h3>
+        <h3>请留下您的评论: </h3>
         <div class="comment_list">
             <% comments.forEach(function(res){ %>
                 <div class="cmt_lists">
@@ -56,33 +32,6 @@
                         </span>
                     </p>
                 </div>
-                <script type="text/javascript">
-                    $('.delete_comment').click(()=>{
-                        $.ajax({
-                            url:"<%= posts[0]['id'] %>/comment/<%= res['id'] %>/remove",
-                            type:'GET',
-                            cache: false,
-                            success:function(msg){
-                                if (msg.data==1) {
-                                    $('.success').text('删除留言成功');
-                                    fade('.success');
-                                    setTimeout(()=>{
-                                        window.location.reload();
-                                    },1000);
-                                }else if(msg.data==2){
-                                    $('.error').text('删除留言失败');
-                                    fade('.error');
-                                    setTimeout(()=>{
-                                        window.location.reload();
-                                    },1000)
-                                }
-                            },
-                            error:function(){
-                                alert('异常');
-                            }
-                        })
-                    })
-                </script>
             <% }) %>
         </div>
         <% if(session.user){ %>
@@ -92,27 +41,5 @@
         </form>
         <% } %>
     </div>
-    <script type="text/javascript">
-        $('.submit').click(function(){
-            $.ajax({
-                url: '/'+document.URL.slice(document.URL.lastIndexOf('/')+1),
-                data:$('.form').serialize(),
-                type: "POST",
-                cache: false,
-                dataType: 'json',
-                success: function (msg) {
-                   if (msg) {
-                        $('.success').text('发表留言成功');
-                        fade('.success');
-                        setTimeout(()=>{
-                            window.location.reload();
-                        },1000);
-                   }
-                },
-                error: function () {
-                    alert('异常');
-                }
-            });
-        })
-    </script>
+    <script type="text/javascript" src="/js/sPost.js"></script>
 <% include footer %>
