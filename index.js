@@ -11,7 +11,7 @@ var koaStatic = require('koa-static');
 var app=new Koa();
 
 // session存储配置
-const sessionMysqlConfig= {
+const sessionMysqlConfig = {
     user: config.database.USERNAME,
     password: config.database.PASSWORD,
     database: config.database.DATABASE,

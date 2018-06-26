@@ -45,14 +45,14 @@ router.get('/create',async (ctx,next)=>{
     });
 });
 
-// psot '/create'
+// post '/create'
 router.post('/create',async (ctx,next)=>{
     console.log(ctx.session.user);
-    var title=ctx.request.body.title;
-    var content=ctx.request.body.content;
-    var id=ctx.session.id;
-    var name=ctx.session.user;
-    var time=moment().format('YYYY-MM-DD HH:mm');
+    var title = ctx.request.body.title;
+    var content = ctx.request.body.content;
+    var id = ctx.session.id;
+    var name = ctx.session.user;
+    var time = moment().format('YYYY-MM-DD HH:mm');
     console.log([name,title,content,id,time]);
     // 这里我们向数据库插入用户名、标题、内容、发表文章用户的id、时间，成功返回true，失败为false
     await userModel.insertPost([name,title,content,id,time])
