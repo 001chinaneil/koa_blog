@@ -7,11 +7,11 @@ $(document).on('click',".submit",function(){
         dataType: 'json',
         success: function (msg) {
             if (msg) {
-                $('.success').text('修改成功')
-                fade('.success')
+                $('.success').text('修改成功');
+                fade('.success');
                 setTimeout(()=>{
-                    window.location.href="/posts"
-                },1000)
+                    window.location.href="/posts";
+                },1000);
             }
         },
         error: function () {
